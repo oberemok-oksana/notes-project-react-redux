@@ -1,10 +1,13 @@
 import { NoteType } from "../types";
+import { useDispatch } from "react-redux";
+import { deleteNote } from "../features/notes/notesSlice";
 
 type NoteTrPropsType = {
   note: NoteType;
 };
 
 const NoteTr = ({ note }: NoteTrPropsType) => {
+  const dispatch = useDispatch();
   let categoryImageSrc = "/images/icons8-cart-30.png";
   let categoryImageAlt = "something";
 
@@ -53,7 +56,11 @@ const NoteTr = ({ note }: NoteTrPropsType) => {
         <img src="/images/icons8-download-24.png" alt="archiving" />
       </td>
       <td className="table-head__td">
-        <img src="/images/icons8-delete-24.png" alt="deleting" />
+        <img
+          src="/images/icons8-delete-24.png"
+          alt="deleting"
+          onClick={() => dispatch(deleteNote(note.id))}
+        />
       </td>
     </tr>
   );
