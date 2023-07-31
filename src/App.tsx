@@ -1,9 +1,14 @@
 import "./App.css";
+import Button from "./components/Button";
+import Table from "./components/Table";
 
 function App() {
   return (
     <>
-      <div>Hello Vova</div>
+      <Table />
+      <div className="button-wrapper">
+        <Button />
+      </div>
     </>
   );
 }
