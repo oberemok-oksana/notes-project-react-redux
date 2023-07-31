@@ -1,6 +1,7 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, nanoid } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import { NoteType } from "../../types";
+import { NoteInputsType, NoteType } from "../../types";
+import { checkForDates, setDate } from "../../lib";
 
 export interface NotesState {
   value: NoteType[];
@@ -78,8 +79,15 @@ export const notesSlice = createSlice({
   name: "notes",
   initialState,
   reducers: {
-    add: (state, action: PayloadAction<NoteType>) => {
-      state.value.push(action.payload);
+    add: (state, action: PayloadAction<NoteInputsType>) => {
+      const note = {
+        ...action.payload,
+        active: true,
+        id: nanoid(),
+        dates: checkForDates(action.payload.content),
+        created: setDate(),
+      };
+      state.value.push(note);
     },
     deleteNote: (state, action: PayloadAction<string>) => {
       state.value = state.value.filter((note) => note.id !== action.payload);
