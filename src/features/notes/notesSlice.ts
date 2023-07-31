@@ -84,8 +84,15 @@ export const notesSlice = createSlice({
     deleteNote: (state, action: PayloadAction<string>) => {
       state.value = state.value.filter((note) => note.id !== action.payload);
     },
+    archive: (state, action: PayloadAction<string>) => {
+      const note = state.value.find((note) => note.id === action.payload);
+
+      if (note) {
+        note.active = false;
+      }
+    },
   },
 });
-export const { add, deleteNote } = notesSlice.actions;
+export const { add, deleteNote, archive } = notesSlice.actions;
 
 export default notesSlice.reducer;

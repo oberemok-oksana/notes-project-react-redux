@@ -1,6 +1,6 @@
 import { NoteType } from "../types";
 import { useDispatch } from "react-redux";
-import { deleteNote } from "../features/notes/notesSlice";
+import { deleteNote, archive } from "../features/notes/notesSlice";
 
 type NoteTrPropsType = {
   note: NoteType;
@@ -53,7 +53,11 @@ const NoteTr = ({ note }: NoteTrPropsType) => {
         <img src="/images/icons8-edit-24.png" alt="editing" />
       </td>
       <td className="table__td">
-        <img src="/images/icons8-download-24.png" alt="archiving" />
+        <img
+          src="/images/icons8-download-24.png"
+          alt="archiving"
+          onClick={() => dispatch(archive(note.id))}
+        />
       </td>
       <td className="table-head__td">
         <img
