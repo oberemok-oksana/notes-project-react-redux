@@ -3,8 +3,9 @@ import { RootState } from "../store";
 import NoteTr from "./NoteTr";
 
 const Table = () => {
-  const notes = useSelector((state: RootState) => state.notes.value);
-  console.log(notes);
+  const activeNotes = useSelector(
+    (state: RootState) => state.notes.value
+  ).filter((note) => note.active);
 
   return (
     <table className="table">
@@ -26,7 +27,7 @@ const Table = () => {
         </tr>
       </thead>
       <tbody>
-        {notes.map((note) => (
+        {activeNotes.map((note) => (
           <NoteTr key={note.id} note={note} />
         ))}
       </tbody>
