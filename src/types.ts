@@ -7,3 +7,5 @@ export type NoteType = {
   active: boolean;
   id: string;
 };
+
+export type NoteInputsType = Pick<NoteType, "title" | "category" | "content">;

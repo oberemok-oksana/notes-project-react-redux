@@ -99,8 +99,15 @@ export const notesSlice = createSlice({
         note.active = false;
       }
     },
+    unarchive: (state, action: PayloadAction<string>) => {
+      const note = state.value.find((note) => note.id === action.payload);
+
+      if (note) {
+        note.active = true;
+      }
+    },
   },
 });
-export const { add, deleteNote, archive } = notesSlice.actions;
+export const { add, deleteNote, archive, unarchive } = notesSlice.actions;
 
 export default notesSlice.reducer;

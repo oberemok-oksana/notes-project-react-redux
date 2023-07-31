@@ -1,11 +1,11 @@
 import { useSelector } from "react-redux";
 import { RootState } from "../store";
-import NoteTr from "./NoteTr";
+import ArchivedNoteTr from "./ArchivedNoteTr";
 
-const Table = () => {
-  const activeNotes = useSelector(
+const ArchivedNotes = () => {
+  const archivedNotes = useSelector(
     (state: RootState) => state.notes.value
-  ).filter((note) => note.active);
+  ).filter((note) => !note.active);
 
   return (
     <table className="table">
@@ -21,18 +21,16 @@ const Table = () => {
           <td className="table__td">
             <img src="/images/icons8-download-24-white.png" alt="archiving" />
           </td>
-          <td className="table__td">
-            <img src="/images/icons8-delete-24-white.png" alt="deleting" />
-          </td>
+          <td className="table-head__td"></td>
         </tr>
       </thead>
       <tbody>
-        {activeNotes.map((note) => (
-          <NoteTr key={note.id} note={note} />
+        {archivedNotes.map((note) => (
+          <ArchivedNoteTr key={note.id} note={note} />
         ))}
       </tbody>
     </table>
   );
 };
 
-export default Table;
+export default ArchivedNotes;

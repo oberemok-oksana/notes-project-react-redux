@@ -6,6 +6,7 @@ body {
   width: 100%;
   margin-bottom: 15px;
   border-collapse: collapse;
+  text-align: center;
 }
 
 .table-head {
@@ -104,4 +105,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.cursor {
+  cursor: pointer;
 }

@@ -1,9 +1,10 @@
 import Button from "./components/Button";
 import Form from "./components/Form";
-import Table from "./components/Table";
+import ActiveNotes from "./components/ActiveNotes";
 import { toggle } from "./features/ui/uiSlice";
 import { RootState } from "./store";
 import { useSelector, useDispatch } from "react-redux";
+import ArchivedNotes from "./components/ArchivedNotes";
 
 function App() {
   const creatingFormIsVisible = useSelector(
@@ -13,7 +14,7 @@ function App() {
 
   return (
     <>
-      <Table />
+      <ActiveNotes />
       <div className="button-wrapper">
         <Button
           type="button"
@@ -22,6 +23,8 @@ function App() {
         />
       </div>
       {creatingFormIsVisible && <Form />}
+      <h3>Archived notes:</h3>
+      <ArchivedNotes />
     </>
   );
 }
