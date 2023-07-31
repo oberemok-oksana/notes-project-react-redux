@@ -5,6 +5,7 @@ import { toggle } from "./features/ui/uiSlice";
 import { RootState } from "./store";
 import { useSelector, useDispatch } from "react-redux";
 import ArchivedNotes from "./components/ArchivedNotes";
+import Summary from "./components/Summary";
 
 function App() {
   const creatingFormIsVisible = useSelector(
@@ -23,6 +24,7 @@ function App() {
         />
       </div>
       {creatingFormIsVisible && <Form />}
+      <Summary />
       <h3>Archived notes:</h3>
       <ArchivedNotes />
     </>

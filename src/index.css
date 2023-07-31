@@ -110,3 +110,9 @@ body {
 .cursor {
   cursor: pointer;
 }
+
+.name-category {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}

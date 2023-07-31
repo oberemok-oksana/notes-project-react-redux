@@ -1,7 +1,7 @@
 export type NoteType = {
   title: string;
   created: string;
-  category: string;
+  category: CategoryType;
   content: string;
   dates: string;
   active: boolean;
@@ -9,3 +9,5 @@ export type NoteType = {
 };
 
 export type NoteInputsType = Pick<NoteType, "title" | "category" | "content">;
+
+export type CategoryType = "Task" | "Random Thought" | "Idea" | "Quote";
