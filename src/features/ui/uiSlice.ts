@@ -1,12 +1,14 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 // import type { PayloadAction } from "@reduxjs/toolkit";
 
 export interface UiState {
   creating: boolean;
+  editing: string | null;
 }
 
 const initialState: UiState = {
   creating: false,
+  editing: null,
 };
 
 export const uiSlice = createSlice({
@@ -22,9 +24,21 @@ export const uiSlice = createSlice({
     toggle: (state) => {
       state.creating = !state.creating;
     },
+    startEditing: (state, action: PayloadAction<string>) => {
+      state.editing = action.payload;
+    },
+    finishEditing: (state) => {
+      state.editing = null;
+    },
   },
 });
 
-export const { showCreatingForm, hideCreatingForm, toggle } = uiSlice.actions;
+export const {
+  showCreatingForm,
+  hideCreatingForm,
+  toggle,
+  startEditing,
+  finishEditing,
+} = uiSlice.actions;
 
 export default uiSlice.reducer;

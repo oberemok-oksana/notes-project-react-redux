@@ -6,11 +6,14 @@ import { RootState } from "./store";
 import { useSelector, useDispatch } from "react-redux";
 import ArchivedNotes from "./components/ArchivedNotes";
 import Summary from "./components/Summary";
+import CreateForm from "./components/CreateForm";
+import UpdateForm from "./components/UpdateForm";
 
 function App() {
   const creatingFormIsVisible = useSelector(
     (state: RootState) => state.ui.creating
   );
+  const editingNoteId = useSelector((state: RootState) => state.ui.editing);
   const dispatch = useDispatch();
 
   return (
@@ -23,7 +26,8 @@ function App() {
           onClick={() => dispatch(toggle())}
         />
       </div>
-      {creatingFormIsVisible && <Form />}
+      {creatingFormIsVisible && <CreateForm />}
+      {editingNoteId && <UpdateForm noteId={editingNoteId} />}
       <Summary />
       <h3>Archived notes:</h3>
       <ArchivedNotes />

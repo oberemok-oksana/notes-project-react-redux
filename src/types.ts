@@ -8,6 +8,10 @@ export type NoteType = {
   id: string;
 };
 
-export type NoteInputsType = Pick<NoteType, "title" | "category" | "content">;
+export type NoteInputsType = {
+  title: string;
+  category: CategoryType | "";
+  content: string;
+};
 
 export type CategoryType = "Task" | "Random Thought" | "Idea" | "Quote";

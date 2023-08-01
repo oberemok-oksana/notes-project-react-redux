@@ -2,6 +2,7 @@ import { NoteType } from "../types";
 import { useDispatch } from "react-redux";
 import { deleteNote, archive } from "../features/notes/notesSlice";
 import CategoryImg from "./CategoryImg";
+import { startEditing } from "../features/ui/uiSlice";
 
 type NoteTrPropsType = {
   note: NoteType;
@@ -27,6 +28,7 @@ const NoteTr = ({ note }: NoteTrPropsType) => {
           className="cursor"
           src="/images/icons8-edit-24.png"
           alt="editing"
+          onClick={() => dispatch(startEditing(note.id))}
         />
       </td>
       <td className="table__td">

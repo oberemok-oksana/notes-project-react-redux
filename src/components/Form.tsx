@@ -1,27 +1,19 @@
 import { useForm, SubmitHandler } from "react-hook-form";
-import { useDispatch } from "react-redux";
-import { add } from "../features/notes/notesSlice";
-import { hideCreatingForm } from "../features/ui/uiSlice";
+import { NoteInputsType } from "../types";
 
-type Inputs = {
-  title: string;
-  content: string;
-  category: string;
+type FormPropsType = {
+  onSubmit: SubmitHandler<NoteInputsType>;
+  initialValues: NoteInputsType;
 };
 
-const Form = () => {
-  const dispatch = useDispatch();
+const Form = ({ onSubmit, initialValues }: FormPropsType) => {
   const {
     register,
     handleSubmit,
-    reset,
     formState: { errors },
-  } = useForm<Inputs>();
-  const onSubmit: SubmitHandler<Inputs> = (data) => {
-    dispatch(add(data));
-    reset();
-    dispatch(hideCreatingForm());
-  };
+  } = useForm<NoteInputsType>({
+    defaultValues: initialValues,
+  });
 
   return (
     <form className="card" onSubmit={handleSubmit(onSubmit)}>
