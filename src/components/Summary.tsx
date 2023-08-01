@@ -8,6 +8,7 @@ const Summary = () => {
           <td className="table-head__td">Note Category</td>
           <td className="table-head__td">Active</td>
           <td className="table-head__td">Archived</td>
+          <td></td>
         </tr>
       </thead>
       <tbody>

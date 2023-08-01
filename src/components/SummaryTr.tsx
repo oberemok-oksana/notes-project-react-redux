@@ -15,7 +15,7 @@ const SummaryTr = ({ category }: SummaryTrPropsType) => {
 
   return (
     <tr className="table-data">
-      <td className="table__td name-category">
+      <td className="name-category">
         <div className="category">
           <CategoryImg category={category} />
         </div>

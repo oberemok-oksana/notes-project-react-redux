@@ -31,6 +31,7 @@ const ArchivedNoteTr = ({ note }: ArchivedNoteTr) => {
           onClick={() => dispatch(unarchive(note.id))}
         />
       </td>
+      <td></td>
     </tr>
   );
 };

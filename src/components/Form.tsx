@@ -24,7 +24,7 @@ const Form = ({ onSubmit, initialValues }: FormPropsType) => {
         placeholder="Note title"
         {...register("title", { required: true })}
       />
-      {errors.title && <span>This field is required</span>}
+      {errors.title && <span className="required">This field is required</span>}
       <div className="wrapper">
         <label htmlFor="category">Choose a note category:</label>
         <select
@@ -38,7 +38,9 @@ const Form = ({ onSubmit, initialValues }: FormPropsType) => {
           <option value="Idea">Idea</option>
           <option value="Quote">Quote</option>
         </select>
-        {errors.category && <span>This field is required</span>}
+        {errors.category && (
+          <span className="required">This field is required</span>
+        )}
       </div>
 
       <textarea
@@ -48,7 +50,9 @@ const Form = ({ onSubmit, initialValues }: FormPropsType) => {
         rows={10}
         {...register("content", { required: true })}
       ></textarea>
-      {errors.content && <span>This field is required</span>}
+      {errors.content && (
+        <span className="required">This field is required</span>
+      )}
 
       <button type="submit" className="button" id="save-note-btn">
         Save
