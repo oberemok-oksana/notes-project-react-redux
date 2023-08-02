@@ -1,5 +1,3 @@
-import { NoteType } from "./types";
-
 const MONTHS = [
   "January",
   "February",
@@ -30,12 +28,4 @@ export const checkForDates = (date: string) => {
   const match = date.match(DATE_REGEX);
 
   return match?.join(", ") || "";
-};
-
-export const getCategoryActiveNotes = (notes: NoteType[]) => {
-  return notes.filter((note) => note.active).length;
-};
-
-export const getCategoryArchivedNotes = (notes: NoteType[]) => {
-  return notes.filter((note) => !note.active).length;
 };

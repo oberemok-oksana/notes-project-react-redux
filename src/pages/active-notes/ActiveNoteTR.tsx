@@ -1,14 +1,14 @@
-import { NoteType } from "../types";
+import { NoteType } from "../../types";
 import { useDispatch } from "react-redux";
-import { deleteNote, archive } from "../features/notes/notesSlice";
-import CategoryImg from "./CategoryImg";
-import { startEditing } from "../features/ui/uiSlice";
+import { deleteNote, archive } from "../../redux/slices/notes/notesSlice";
+import CategoryImg from "../../components/CategoryImg";
+import { startEditing } from "../../redux/slices/ui/uiSlice";
 
-type NoteTrPropsType = {
+type ActiveNoteTRPropsType = {
   note: NoteType;
 };
 
-const NoteTr = ({ note }: NoteTrPropsType) => {
+const ActiveNoteTR = ({ note }: ActiveNoteTRPropsType) => {
   const dispatch = useDispatch();
 
   return (
@@ -51,4 +51,4 @@ const NoteTr = ({ note }: NoteTrPropsType) => {
   );
 };
 
-export default NoteTr;
+export default ActiveNoteTR;

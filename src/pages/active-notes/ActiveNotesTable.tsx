@@ -1,11 +1,11 @@
 import { useSelector } from "react-redux";
-import { RootState } from "../store";
-import NoteTr from "./NoteTr";
+import ActiveNoteTR from "./ActiveNoteTR";
+import { RootState } from "../../redux/store";
 
-const ActiveNotes = () => {
-  const activeNotes = useSelector(
-    (state: RootState) => state.notes.value
-  ).filter((note) => note.active);
+const ActiveNotesTable = () => {
+  const activeNotes = useSelector((state: RootState) => state.notes).filter(
+    (note) => note.active
+  );
 
   return (
     <table className="table">
@@ -28,11 +28,11 @@ const ActiveNotes = () => {
       </thead>
       <tbody>
         {activeNotes.map((note) => (
-          <NoteTr key={note.id} note={note} />
+          <ActiveNoteTR key={note.id} note={note} />
         ))}
       </tbody>
     </table>
   );
 };
 
-export default ActiveNotes;
+export default ActiveNotesTable;

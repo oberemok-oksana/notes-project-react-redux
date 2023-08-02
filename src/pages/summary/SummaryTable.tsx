@@ -1,6 +1,6 @@
-import SummaryTr from "./SummaryTr";
+import SummaryTR from "./SummaryTR";
 
-const Summary = () => {
+const SummaryTable = () => {
   return (
     <table className="table">
       <thead className="table-head">
@@ -12,13 +12,13 @@ const Summary = () => {
         </tr>
       </thead>
       <tbody>
-        <SummaryTr category="Task" />
-        <SummaryTr category="Idea" />
-        <SummaryTr category="Random Thought" />
-        <SummaryTr category="Quote" />
+        <SummaryTR category="Task" />
+        <SummaryTR category="Idea" />
+        <SummaryTR category="Random Thought" />
+        <SummaryTR category="Quote" />
       </tbody>
     </table>
   );
 };
 
-export default Summary;
+export default SummaryTable;

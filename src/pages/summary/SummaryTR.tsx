@@ -1,15 +1,18 @@
-import CategoryImg from "./CategoryImg";
-import { getCategoryActiveNotes, getCategoryArchivedNotes } from "../lib";
-import { CategoryType } from "../types";
-import { RootState } from "../store";
+import CategoryImg from "../../components/CategoryImg";
+import {
+  getCategoryActiveNotes,
+  getCategoryArchivedNotes,
+} from "../../utils/utils";
+import { CategoryType } from "../../types";
+import { RootState } from "../../redux/store";
 import { useSelector } from "react-redux";
 
 type SummaryTrPropsType = {
   category: CategoryType;
 };
 
-const SummaryTr = ({ category }: SummaryTrPropsType) => {
-  const notes = useSelector((state: RootState) => state.notes.value).filter(
+const SummaryTR = ({ category }: SummaryTrPropsType) => {
+  const notes = useSelector((state: RootState) => state.notes).filter(
     (note) => note.category === category
   );
 
@@ -27,4 +30,4 @@ const SummaryTr = ({ category }: SummaryTrPropsType) => {
   );
 };
 
-export default SummaryTr;
+export default SummaryTR;

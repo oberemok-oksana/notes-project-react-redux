@@ -1,13 +1,13 @@
-import { NoteType } from "../types";
+import { NoteType } from "../../types";
 import { useDispatch } from "react-redux";
-import { unarchive } from "../features/notes/notesSlice";
-import CategoryImg from "./CategoryImg";
+import { unarchive } from "../../redux/slices/notes/notesSlice";
+import CategoryImg from "../../components/CategoryImg";
 
-type ArchivedNoteTr = {
+type ArchivedNoteTR = {
   note: NoteType;
 };
 
-const ArchivedNoteTr = ({ note }: ArchivedNoteTr) => {
+const ArchivedNoteTR = ({ note }: ArchivedNoteTR) => {
   const dispatch = useDispatch();
 
   return (
@@ -36,4 +36,4 @@ const ArchivedNoteTr = ({ note }: ArchivedNoteTr) => {
   );
 };
 
-export default ArchivedNoteTr;
+export default ArchivedNoteTR;

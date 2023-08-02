@@ -1,9 +1,9 @@
 import { SubmitHandler } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import { add } from "../features/notes/notesSlice";
-import { hideCreatingForm } from "../features/ui/uiSlice";
-import { NoteInputsType } from "../types";
-import Form from "./Form";
+import { add } from "../../redux/slices/notes/notesSlice";
+import { hideCreatingForm } from "../../redux/slices/ui/uiSlice";
+import { NoteInputsType } from "../../types";
+import Form from "../../components/Form";
 
 const CreateForm = () => {
   const dispatch = useDispatch();
