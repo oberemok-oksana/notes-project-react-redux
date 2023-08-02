@@ -1,7 +1,8 @@
-import { createSlice, nanoid } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, nanoid } from "@reduxjs/toolkit";
 import { CategoryType, NoteInputsType, NoteType } from "../../../types";
 import { checkForDates, setDate } from "../../../utils/date";
+import { RootState } from "../../store";
 
 const initialState: NoteType[] = [
   {
@@ -69,7 +70,7 @@ const initialState: NoteType[] = [
   },
 ];
 
-const getNoteById = (state: NoteType[], id: string) =>
+const findNoteById = (state: NoteType[], id: string) =>
   state.find((note) => note.id === id);
 
 export const notesSlice = createSlice({
@@ -92,13 +93,13 @@ export const notesSlice = createSlice({
       state.splice(index, 1);
     },
     archive: (state, action: PayloadAction<string>) => {
-      const note = getNoteById(state, action.payload);
+      const note = findNoteById(state, action.payload);
       if (note) {
         note.active = false;
       }
     },
     unarchive: (state, action: PayloadAction<string>) => {
-      const note = getNoteById(state, action.payload);
+      const note = findNoteById(state, action.payload);
       if (note) {
         note.active = true;
       }
@@ -107,7 +108,7 @@ export const notesSlice = createSlice({
       state,
       action: PayloadAction<{ id: string; note: NoteInputsType }>
     ) => {
-      const note = getNoteById(state, action.payload.id);
+      const note = findNoteById(state, action.payload.id);
       if (note) {
         note.title = action.payload.note.title;
         note.category = action.payload.note.category as CategoryType;
@@ -120,5 +121,18 @@ export const notesSlice = createSlice({
 
 export const { add, deleteNote, archive, unarchive, update } =
   notesSlice.actions;
+
+export const getActiveNotes = (state: RootState) =>
+  state.notes.filter((note) => note.active);
+
+export const getArchivedNotes = (state: RootState) =>
+  state.notes.filter((note) => !note.active);
+
+export const getNoteByCategory =
+  (category: CategoryType) => (state: RootState) =>
+    state.notes.filter((note) => note.category === category);
+
+export const getNoteById = (id: string) => (state: RootState) =>
+  state.notes.find((note) => note.id === id);
 
 export default notesSlice.reducer;

@@ -1,4 +1,5 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { RootState } from "../../store";
 // import type { PayloadAction } from "@reduxjs/toolkit";
 
 export interface UiState {
@@ -40,5 +41,9 @@ export const {
   startEditing,
   finishEditing,
 } = uiSlice.actions;
+
+export const isCreating = (state: RootState) => state.ui.creating;
+
+export const getEditingNoteId = (state: RootState) => state.ui.editing;
 
 export default uiSlice.reducer;

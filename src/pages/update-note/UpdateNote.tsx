@@ -1,9 +1,9 @@
 import { useSelector } from "react-redux";
+import { getEditingNoteId } from "../../redux/slices/ui/uiSlice";
 import UpdateForm from "./UpdateForm";
-import { RootState } from "../../redux/store";
 
 const UpdateNote = () => {
-  const editingNoteId = useSelector((state: RootState) => state.ui.editing);
+  const editingNoteId = useSelector(getEditingNoteId);
 
   if (!editingNoteId) {
     return null;

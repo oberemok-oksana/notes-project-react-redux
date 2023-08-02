@@ -1,11 +1,9 @@
 import { useSelector } from "react-redux";
 import ActiveNoteTR from "./ActiveNoteTR";
-import { RootState } from "../../redux/store";
+import { getActiveNotes } from "../../redux/slices/notes/notesSlice";
 
 const ActiveNotesTable = () => {
-  const activeNotes = useSelector((state: RootState) => state.notes).filter(
-    (note) => note.active
-  );
+  const activeNotes = useSelector(getActiveNotes);
 
   return (
     <table className="table">

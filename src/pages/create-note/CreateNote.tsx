@@ -1,12 +1,10 @@
 import { useSelector } from "react-redux";
-import { RootState } from "../../redux/store";
+import { isCreating } from "../../redux/slices/ui/uiSlice";
 import CreateForm from "./CreateForm";
 import ShowCreateFormButton from "./ShowCreateFormButton";
 
 const CreateNote = () => {
-  const creatingFormIsVisible = useSelector(
-    (state: RootState) => state.ui.creating
-  );
+  const creatingFormIsVisible = useSelector(isCreating);
 
   return (
     <>

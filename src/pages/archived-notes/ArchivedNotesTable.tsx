@@ -1,11 +1,9 @@
 import { useSelector } from "react-redux";
-import { RootState } from "../../redux/store";
+import { getArchivedNotes } from "../../redux/slices/notes/notesSlice";
 import ArchivedNoteTR from "./ArchivedNoteTR";
 
 const ArchivedNotesTable = () => {
-  const archivedNotes = useSelector((state: RootState) => state.notes).filter(
-    (note) => !note.active
-  );
+  const archivedNotes = useSelector(getArchivedNotes);
 
   return (
     <table className="table">

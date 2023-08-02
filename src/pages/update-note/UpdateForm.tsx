@@ -1,10 +1,9 @@
 import { SubmitHandler } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
-import { update } from "../../redux/slices/notes/notesSlice";
-import { finishEditing } from "../../redux/slices/ui/uiSlice";
-import { RootState } from "../../redux/store";
-import { NoteInputsType } from "../../types";
 import Form from "../../components/Form";
+import { getNoteById, update } from "../../redux/slices/notes/notesSlice";
+import { finishEditing } from "../../redux/slices/ui/uiSlice";
+import { NoteInputsType } from "../../types";
 
 type UpdateFormPropsType = {
   noteId: string;
@@ -12,9 +11,7 @@ type UpdateFormPropsType = {
 
 const UpdateForm = ({ noteId }: UpdateFormPropsType) => {
   const dispatch = useDispatch();
-  const note = useSelector((state: RootState) => state.notes).find(
-    (note) => note.id === noteId
-  );
+  const note = useSelector(getNoteById(noteId));
 
   if (!note) {
     return null;

@@ -4,17 +4,15 @@ import {
   getCategoryArchivedNotes,
 } from "../../utils/utils";
 import { CategoryType } from "../../types";
-import { RootState } from "../../redux/store";
 import { useSelector } from "react-redux";
+import { getNoteByCategory } from "../../redux/slices/notes/notesSlice";
 
 type SummaryTrPropsType = {
   category: CategoryType;
 };
 
 const SummaryTR = ({ category }: SummaryTrPropsType) => {
-  const notes = useSelector((state: RootState) => state.notes).filter(
-    (note) => note.category === category
-  );
+  const notes = useSelector(getNoteByCategory(category));
 
   return (
     <tr className="table-data">
